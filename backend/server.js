@@ -15,31 +15,7 @@ const Users = require("./models/users");
 
 const app = express();
 app.use(express.json());
-
 app.use(cors());
-
-//Middleware for Auth
-// const checkAuth = (req, res, next) => {
-//     //Bearer <token>
-
-//     if(req.headers.authorization){
-//         const [type, token] = req.headers.authorization.split(' ');
-
-//         //Валидация токена
-//          jwt.verify(token, 'Very secret code', (err, decoded) => {
-//              if(err){
-//                  return res.status(403).send();
-//              }
-
-//              req.user = decoded;
-//              next();
-//          });
-//     } else {
-//         return res.status(403).send();
-//     }
-// };
-
-// app.use('/tasks', checkAuth);
 
 app.get('/users', async (req, res) => {
   const users = await Users.find();
@@ -73,6 +49,7 @@ app.post('/flats', async (req, res) => {
   res.status(200).res.json(savedFlat);
 });
 
-app.listen(4000, () => {
-  console.log("Server works in 4000");
+const PORT = 4000;
+app.listen(PORT, () => {
+  console.log(`Server works in ${PORT}`);
 });

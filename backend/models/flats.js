@@ -12,6 +12,5 @@ const dataSchema = new Schema({
   city: { type: String },
   address: { type: String },
   area: { type: String },
-
 });
 module.exports = mongoose.model('flats', dataSchema, 'flats');

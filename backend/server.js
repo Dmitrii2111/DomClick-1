@@ -47,31 +47,31 @@ app.get('/users', async (req, res) => {
 });
 
 app.get('/users/:id', async (req, res) => {
-  console.log(req.params.id)
   const user = await Users.findById(req.params.id);
-  res.json(user);
+  res.status(200).res.json(user);
 });
 
 app.post('/users', async (req, res) => {
   const user = new Users(req.body);
   const savedUser = await user.save();
-  console.log(savedUser)
-  res.json(savedUser);
+  res.status(200).res.json(savedUser);
 });
-
-// app.post('/tasks', async (req, res) => {
-//   const {_id} = req.user;
-//   const task = new taskMongoose({...req.body, user: _id});
-//   await task.save();
-//   res.redirect('/tasks');
-// });
-
 
 app.get('/flats', async (req, res) => {
-  data = await Flats.find();
-  res.status(200).json(data);
+  flats = await Flats.find();
+  res.status(200).json(flats);
 });
 
+app.get('/flats/:id', async (req, res) => {
+  const flat = await Flats.findById(req.params.id);
+  res.status(200).json(flat);
+});
+
+app.post('/flats', async (req, res) => {
+  const flat = new Flats(req.body);
+  const savedFlat = await flat.save();
+  res.status(200).res.json(savedFlat);
+});
 
 app.listen(4000, () => {
   console.log("Server works in 4000");

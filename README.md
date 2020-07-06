@@ -3,14 +3,14 @@
 ## API
 
 ### GET
-    '/users' - получаем всех пользователей
-    '/users/:id' - получаем одного пользователя по id
+'/users' - получаем всех пользователей
+'/users/:id' - получаем одного пользователя по id
 
-    '/flats' - получаем все квартиры
+'/flats' - получаем все квартиры
 
 
 ### POST
-    '/users' - записываем пользователя
-        *name: { type: String },*
-        *password: { type: String },*
-        * role: { type: String }, *
+'/users' - записываем пользователя
+* name: { type: String },
+* password: { type: String },
+* role: { type: String }, 

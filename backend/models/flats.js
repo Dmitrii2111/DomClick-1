@@ -13,4 +13,4 @@ const dataSchema = new Schema({
   address: { type: String },
   area: { type: String },
 });
-module.exports = mongoose.model('flats', dataSchema, 'flats');
+module.exports = mongoose.model('Flats', dataSchema, 'flats');

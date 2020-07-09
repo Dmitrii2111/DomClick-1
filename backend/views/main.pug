@@ -1,0 +1,59 @@
+html
+   head
+      title= "Список квартир"
+      script(language="javascript" src="jquery.min.js")
+      script(language="javascript" src="js/bootstrap.min.js")
+      link(rel="stylesheet" href="css/bootstrap.min.css")
+   body
+      div.container
+         h1(class="text-center mt-2") Список квартир
+         form
+            div(class="d-flex justify-content-between")
+               button(type="submit" formaction="/admin/add" formmethod="GET" class="btn btn-primary mb-2")
+                  | Добавить объект
+               button(type="submit" formaction="/flats/delete" formmethod="POST" class="btn btn-danger mb-2")
+                  | Удалить отмеченные
+
+            table(class="table")
+               thead(class="thead-dark")
+                  tr
+                     th(class="align-middle text-center" scope="col") Редактировать
+                     th(class="align-middle text-center" scope="col") Адрес
+                     th(class="align-middle text-center" scope="col") Цена
+                     th(class="align-middle text-center" scope="col") Цена за м2
+                     th(class="align-middle text-center" scope="col") Валюта
+                     th(class="align-middle text-center" scope="col") Хозяин
+                     th(class="align-middle text-center" scope="col") Количество комнат
+                     th(class="align-middle text-center" scope="col") Этаж
+                     th(class="align-middle text-center" scope="col")
+                        svg(class="bi bi-check-box" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor"
+                           xmlns="http://www.w3.org/2000/svg")
+                           path(fill-rule="evenodd"
+                              d="M17.354 4.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L10 11.293l6.646-6.647a.5.5 0 01.708 0z"
+                              clip-rule="evenodd" )
+                           path(fill-rule="evenodd"
+                              d="M3.5 15A1.5 1.5 0 005 16.5h10a1.5 1.5 0 001.5-1.5v-5a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H5a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h8a.5.5 0 000-1H5A1.5 1.5 0 003.5 5v10z"
+                              clip-rule="evenodd" )
+               tbody
+                  each flat in flats 
+                     tr
+                        td(class="align-middle text-center")
+                           button(type="submit" formaction=`/admin/edit/${flat._id}` formmethod="POST" class="btn btn-light"
+                              name="flat_id" value=`${flat._id}`)
+                              svg(class="bi bi-document-text" width="1em" height="1em" viewBox="0 0 20 20" fill="black"
+                                 xmlns="http://www.w3.org/2000/svg")
+                                 path(fill-rule="evenodd"
+                                    d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z"
+                                    clip-rule="evenodd" )
+                                 path(fill-rule="evenodd"
+                                    d="M6.5 14a.5.5 0 01.5-.5h3a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5z"
+                                    clip-rule="evenodd" )
+                        th(class="align-middle text-center" scope="col")= flat.address
+                        th(class="align-middle text-center" scope="col")= flat.cost
+                        th(class="align-middle text-center" scope="col")= flat.cost_m2
+                        th(class="align-middle text-center" scope="col")= flat.currency
+                        th(class="align-middle text-center" scope="col")= flat.owner
+                        th(class="align-middle text-center" scope="col")= flat.rooms
+                        th(class="align-middle text-center" scope="col")= flat.floor
+                        th(class="align-middle text-center" scope="row")
+                           input(type="checkbox" name="checkBoxFlat" class="checkBoxFlat" value= flat._id)

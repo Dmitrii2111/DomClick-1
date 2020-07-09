@@ -1,0 +1,47 @@
+script( language="javascript" src="jquery.min.js")
+script( language="javascript" src="js/bootstrap.min.js")
+link( rel="stylesheet" href="css/bootstrap.min.css")
+title Добавление
+
+div(class="container")
+   h1(class="text-center mt-2") Добавление
+   form
+      table(class="table")
+         thead(class="thead-dark")
+            tr
+               th(class="align-middle text-center" scope="col") Поле
+               th(class="align-middle text-center" scope="col") Значение
+         tbody
+            tr
+               th(class="align-middle text-center" scope="col") Адрес
+               th(class="align-middle text-center" scope="col")
+                  input(type="text" name=`address` class="form-control")
+            tr
+               th(class="align-middle text-center" scope="col") Цена
+               th(class="align-middle text-center" scope="col")
+                  input(type="text" name=`cost` class="form-control")
+            tr
+               th(class="align-middle text-center" scope="col") Цена за м2
+               th(class="align-middle text-center" scope="col")
+                  input(type="text" name=`cost_m2` class="form-control")
+            tr
+               th(class="align-middle text-center" scope="col") Валюта
+               th(class="align-middle text-center" scope="col")
+                  input(type="text" name=`currency` class="form-control")
+            tr
+               th(class="align-middle text-center" scope="col") Хозяин
+               th(class="align-middle text-center" scope="col")
+                  input(type="text" name=`owner` class="form-control")
+            tr
+               th(class="align-middle text-center" scope="col") Количество комнат
+               th(class="align-middle text-center" scope="col")
+                  input(type="text" name=`rooms` class="form-control")
+            tr
+               th(class="align-middle text-center" scope="col") Этаж
+               th(class="align-middle text-center" scope="col")
+                  input(type="text" name=`floor` class="form-control")
+      div(class="d-flex justify-content-between")
+         button(onclick="window.location = '/admin/main'" class="btn btn-danger mb-2")
+            | Отменить
+         button(type="submit" formaction=`/flats/add` formmethod="POST" class="btn btn-primary mb-2")
+            | Добавить

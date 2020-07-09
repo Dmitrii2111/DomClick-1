@@ -1,0 +1,26 @@
+script( language="javascript" src="jquery.min.js")
+script( language="javascript" src="js/bootstrap.min.js")
+link( rel="stylesheet" href="css/bootstrap.min.css")
+title Редактирование
+
+div(class="container")
+    h1(class="text-center mt-2") Редактирование 
+    form
+        table(class="table")
+            thead(class="thead-dark")
+                tr
+                    th(class="align-middle text-center" scope="col") Поле
+                    th(class="align-middle text-center" scope="col") Значение
+            tbody
+                each field, key  in flat 
+                    tr
+                        if key !== '_id'
+                            th(class="align-middle text-center" scope="col")= key
+                            th(class="align-middle text-center" scope="col")
+                                input(type="text" name=`${key}` class="form-control" value= field)
+        div(class="d-flex justify-content-end")
+            button(type="submit" formaction=`/flats/${flat._id}` formmethod="POST" class="btn btn-primary mb-2")
+                | Изменить
+    div(class="d-flex justify-content-between")
+        button(onclick="window.location.href='/admin/main'" formmethod="POST" class="btn btn-danger mb-2")
+            | Отменить

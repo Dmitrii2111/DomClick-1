@@ -1,0 +1,188 @@
+swagger: "2.0"
+info:
+  description: "DomClick dev"
+  version: "1.0.0"
+  title: "DomClick dev"
+  termsOfService: "http://osipuk.ru/"
+  contact:
+    email: "andrey.o@list.ru"
+host: "osipuk.ru"
+basePath: "/v2"
+tags:
+- name: "users"
+  description: "Access users"
+  externalDocs:
+    description: ""
+    url: "http://"
+- name: "flats"
+  description: "Access to flats"
+
+schemes:
+- "http"
+paths:
+  /users:
+    get:
+      tags:
+      - "users"
+      summary: "Get all users"
+      description: "get users"
+      operationId: "get users"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Get all users"
+        required: true
+        schema:
+          $ref: "#/definitions/Users"
+      responses:
+        "204":
+          description: 'An error has occurred'
+    post:
+      tags:
+      - "users"
+      summary: "Put new user"
+      description: "Put new user"
+      operationId: "Put new user"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Get all users"
+        required: true
+        schema:
+          $ref: "#/definitions/Users"
+      responses:
+        "204":
+          description: 'An error has occurred'
+  /users/{id}:
+    get:
+      tags:
+      - "users"
+      summary: "Get one users"
+      description: "get one user"
+      operationId: "get one user"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The name that needs to be fetched. Use user1 for testing. "
+        required: true
+        type: "string"
+      responses:
+        "204":
+          description: 'An error has occurred'
+  /flats:
+    get:
+      tags:
+      - "flats"
+      summary: "Get all flats"
+      description: "get flats"
+      operationId: "get flats"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Get all flats"
+        required: true
+        schema:
+          $ref: "#/definitions/Flats"
+      responses:
+        "204":
+          description: 'An error has occurred'
+  /flats/{id}:
+    get:
+      tags:
+      - "flats"
+      summary: "Get one flat"
+      description: "Get one flat"
+      operationId: "Get one flat"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The name that needs to be fetched. Use user1 for testing. "
+        required: true
+        type: "string"
+      responses:
+        "204":
+          description: 'An error has occurred'
+  /flats/add:
+    post:
+      tags:
+      - "flats"
+      summary: "Put new flat"
+      description: "Put new flat"
+      operationId: "Put new flat"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Put new flat"
+        required: true
+        schema:
+          $ref: "#/definitions/Flats"
+      responses:
+        "204":
+          description: 'An error has occurred'
+
+definitions:
+  Flats:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "ObjectID"
+      images:
+        type: "array"
+        format: "String"
+        items:
+          $ref: "#/definitions/Flats"
+      cost:
+        type: "integer"
+        format: "int32"
+      cost_m2:
+        type: "integer"
+        format: "int32"
+      currency:
+        type: "string"
+        description: "Currency"
+        enum:
+        - "P"
+        - "$"
+        - "Gr"
+      owner:
+        type: "string"
+        format: "string"
+      rooms:
+        type: "integer"
+        format: "int32"
+      floor:
+        type: "integer"
+        format: "int32"
+      city:
+        type: "string"
+        format: "string"
+      address:
+        type: "string"
+        format: "string"
+      area:
+        type: "string"
+        format: "string"
+  Users:
+    type: "object"
+    required:
+    - "name"
+    - "password"
+    - "role"
+    properties:
+      id:
+        type: "string"
+        format: "ObjectID"
+      name:
+        type: "string"
+        format: "string"
+      password:
+        type: "string"
+        format: "string"
+      role:
+        type: "string"
+        description: "Role"
+        enum:
+        - "admin"
+        - "user"
+
